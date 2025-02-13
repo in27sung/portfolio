@@ -7,11 +7,11 @@ import Button from "@/components/Button";
 const Hero: FC = () => {
   return (
     <section>
-      <div className="grid md:grid-cols-12">
-        <div className="md:col-span-7">
+      <div className="grid md:grid-cols-12 md:h-screen items-stretch">
+        <div className="md:col-span-7 flex flex-col justify-center">
           <div className="container !max-w-full">
-            <h1 className="text-5xl md:text-6xl mt-40">
-              Crafting digital experiences through code and createive design
+            <h1 className="text-5xl md:text-6xl mt-40 md:mt-0">
+              Crafting digital experiences through code and creative design
             </h1>
             <div className="flex flex-col mt-10 items-start gap-6">
               <Button
@@ -36,8 +36,8 @@ const Hero: FC = () => {
           </div>
         </div>
         <div className="md:col-span-5">
-          <div className="mt-20">
-            <Image src={heroImage} alt="My portrait" />
+          <div className="mt-20 md:mt-0 h-full">
+            <Image src={heroImage} alt="My portrait" className="size-full object-cover" />
           </div>
         </div>
       </div>
