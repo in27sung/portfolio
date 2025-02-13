@@ -10,10 +10,10 @@ const Hero: FC = () => {
       <div className="grid md:grid-cols-12 md:h-screen items-stretch">
         <div className="md:col-span-7 flex flex-col justify-center">
           <div className="container !max-w-full">
-            <h1 className="text-5xl md:text-6xl mt-40 md:mt-0">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl mt-40 md:mt-0">
               Crafting digital experiences through code and creative design
             </h1>
-            <div className="flex flex-col mt-10 items-start gap-6">
+            <div className="flex flex-col md:flex-row md:items-center mt-10 items-start gap-6">
               <Button
                 variant="secondary"
                 iconAfter={
