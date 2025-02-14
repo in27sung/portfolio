@@ -31,24 +31,24 @@ const projects = [
 ];
 
 const Projects: FC = () => {
-  return <section className="py-24">
+  return <section className="py-24 md:py-32">
     <div className="container">
-      <h2 className="text-4xl">Selected works</h2>
-      <div className="mt-10">
+      <h2 className="text-4xl md:text-7xl">Selected works</h2>
+      <div className="mt-10 md:mt-16">
         {projects.map(({ name, image }) => (
           <a
             href="#"
             key={name}
-            className="border-t last:border-b border-stone-400 border-dotted py-6 flex flex-col">
+            className="border-t last:border-b border-stone-400 border-dotted py-6 md:py-8 flex flex-col">
             <div className="">
-              <div className="aspect-video">
-                <Image 
-                src={image} 
-                alt={`${name} image`} 
-                className="size-full object-cover" />
+              <div className="aspect-video md:hidden">
+                <Image
+                  src={image}
+                  alt={`${name} image`}
+                  className="size-full object-cover" />
               </div>
-              <div className="mt-8 flex justify-between items-center">
-                <h3 className="text-2xl">{name}</h3>
+              <div className="mt-8 md:mt-0 flex justify-between items-center">
+                <h3 className="text-2xl md:text-3xl">{name}</h3>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
