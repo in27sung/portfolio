@@ -34,8 +34,8 @@ const Footer: FC = () => {
         </div>
         <div className="grid md:grid-cols-3 md:items-center">
           <div className="md:col-span-2">
-          <h2 className="text-4xl md:text-7xl mt-8 font-extralight">
-            Enough talk. Let's make someting great together.
+          <h2 className="text-4xl md:text-7xl lg:text-8xl mt-8 font-extralight">
+            Enough talk. Let&rsquo;s make someting great together.
           </h2>
           <Button variant="secondary" className="mt-8" iconAfter={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
