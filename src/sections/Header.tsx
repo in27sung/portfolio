@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { useState, useEffect } from 'react';
 import Button from "@/components/Button";
 import { motion, useAnimate } from 'framer-motion';
