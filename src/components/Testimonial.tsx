@@ -23,7 +23,7 @@ const Testimonial = (
 
     useEffect(() => {
         new SplitType(quoteScope.current, {
-            types: "lines, words",
+            types: "lines,words",
             tagName: "span",
         });
     }, []);
