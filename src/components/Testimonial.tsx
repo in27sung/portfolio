@@ -1,7 +1,9 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
+import SplitType from "split-type";
+import { useAnimate } from "motion/react";
 
 const Testimonial = (
     props: {
@@ -15,6 +17,16 @@ const Testimonial = (
     } & HTMLAttributes<HTMLDivElement>) => {
 
     const { quote, name, role, company, imagePositionY, image, className, ...rest } = props;
+
+    const [quoteScope, quoteAnimate] = useAnimate();
+    const [citeScope, citeAnimate] = useAnimate();
+
+    useEffect(() => {
+        new SplitType(quoteScope.current, {
+            types: "lines, words",
+            tagName: "span",
+        });
+    }, []);
 
     return (
         <div
@@ -34,9 +46,9 @@ const Testimonial = (
                 />
             </div>
             <blockquote className="md:col-span-3">
-                <div className="text-3xl md:text-5xl lg:text-6xl mt-8 md:mt-0">
+                <div className="text-3xl md:text-5xl lg:text-6xl mt-8 md:mt-0" ref={quoteScope}>
                     <span>&ldquo;</span>
-                    <span className="">{quote}</span>
+                    {quote}
                     <span>&rdquo;</span>
                 </div>
                 <cite className="mt-4 md:mt-8 not-italic block md:text-lg lg:text-xl">
