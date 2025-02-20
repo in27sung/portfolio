@@ -1,4 +1,5 @@
 import { stagger } from "motion";
+import { useAnimate } from "motion/react";
 import { useEffect } from "react";
 import SplitType from "split-type";
 
@@ -18,15 +19,31 @@ const useTextRevealAnimation = () => {
         transform: "translateY(0)",
       },
       {
-        duraction: 0.5,
-        delay: stagger(0.2),
+        duration: 0.5,
+        delay: stagger(0.15),
+      }
+    );
+  };
+
+  const exitAnimation = () => {
+    return animate(
+      scope.current.querySelectorAll(".word"),
+      {
+        transform: "translateY(100%)",
+      },
+      {
+        duration: 0.3,
+        delay: stagger(-0.025, {
+          startDelay: scope.current.querySelectorAll('.word').length * .025,
+        }),
       }
     );
   };
 
   return {
     scope,
-    entranceAnimation
+    entranceAnimation,
+    exitAnimation,
   };
 };
 

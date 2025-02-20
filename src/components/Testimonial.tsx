@@ -3,7 +3,8 @@ import Image from "next/image";
 import { HTMLAttributes, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import SplitType from "split-type";
-import { useAnimate } from "motion/react";
+import { usePresence } from "motion/react";
+import useTextRevealAnimation from "@/hooks/useTextRevealAnimation";
 
 const Testimonial = (
     props: {
@@ -17,16 +18,21 @@ const Testimonial = (
     } & HTMLAttributes<HTMLDivElement>) => {
 
     const { quote, name, role, company, imagePositionY, image, className, ...rest } = props;
-
-    const [quoteScope, quoteAnimate] = useAnimate();
-    const [citeScope, citeAnimate] = useAnimate();
+    const { scope: quoteScope, entranceAnimation: quoteEntranceAnimate, exitAnimation: quoteExitAnimation } = useTextRevealAnimation();
+    const { scope: citeScope, entranceAnimation: citeEntranceAnimate } = useTextRevealAnimation();
+    const [isPresent, safeToRemove] = usePresence();
 
     useEffect(() => {
-        new SplitType(quoteScope.current, {
-            types: "lines,words",
-            tagName: "span",
-        });
-    }, []);
+        if (isPresent) {
+            quoteEntranceAnimate().then(() => {
+                citeEntranceAnimate();
+            });
+        } else {
+            quoteExitAnimation().then(() => {
+                safeToRemove();
+            });
+        }
+    }, [isPresent]);
 
     return (
         <div
@@ -51,7 +57,7 @@ const Testimonial = (
                     {quote}
                     <span>&rdquo;</span>
                 </div>
-                <cite className="mt-4 md:mt-8 not-italic block md:text-lg lg:text-xl">
+                <cite className="mt-4 md:mt-8 not-italic block md:text-lg lg:text-xl" ref={citeScope}>
                     {name}, {role} at {company}
                 </cite>
             </blockquote>
