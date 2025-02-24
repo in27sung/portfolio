@@ -121,7 +121,8 @@ const Header: FC = () => {
 
     if (!target) return;
     target.scrollIntoView({ behavior: 'smooth' })
-  }
+  };
+
   return (
     <header>
       <div className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-stone-900 z-10" ref={navScope}>
